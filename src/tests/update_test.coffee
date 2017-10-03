@@ -8,7 +8,7 @@ search = new Search(config.options)
 items = [
   {
     identifier:'001'
-    title:'测试'
+    title:'测试2'
     author:'yxd'
     subject: '阿里云的opensearch 开发测试'
     keywords:'测试，opensearch'
@@ -19,26 +19,12 @@ items = [
   }
 ]
 
-items = []
-for i in [1..10]
-  items.push {
-    identifier : "00#{i}"
-    title:'测试'
-    author:'yxd'
-    subject: '阿里云的opensearch 开发测试'
-    keywords:'测试，opensearch'
-    content: '阿里云的opensearch 开发测试 content'
-    creation_date: Date.now()
-    modified_date: Date.now()
-    format:'json'
-  }
-
-describe "test search insert", ->
+describe "test search update", ->
   before () ->
 
-  describe "insert", ->
-    it "should insert opensearch", (done) ->
-      search.insert items, 'main', (err, data)->
+  describe "update", ->
+    it "should update opensearch", (done) ->
+      search.update items, 'main', (err, data)->
         if err?
           console.dir err
           return done()
