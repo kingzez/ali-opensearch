@@ -38,6 +38,8 @@ generateHeader = (query, contentType, date, nonce) ->
   return header
 
 generateUri = (uri, http_params) ->
+  queryString = urlEncode.query2string(http_params)
+  return "#{uri}" if _.isEmpty(queryString)
   return "#{uri}?#{urlEncode.query2string(http_params)}"
 
 parseResult = (data, page, pageSize) ->
@@ -83,7 +85,30 @@ makeConfig = (config, pageSize) ->
     str = "format:#{config.format||'json'},start:#{config.start||0},hit:#{config.hit||pageSize}"
     str += ",rerank_size:#{config.rerank_size}" if config.rerank_size?
     return str
-  return "fromat:json,start:#{0},hit:#{pageSize}"
+  return "format:json,start:#{0},hit:#{pageSize}"
+
+makeSummary = (summary) ->
+  if _.isString(summary)
+    return summary
+  if _.isObject(summary)
+    str = ""
+    for key, val of summary
+      #console.log "。。。key:#{key} val: #{val}"
+      str += "#{key}:#{val},"
+    #console.log str
+    return str.substring(0, str.length-1)
+  return null
+
+# 生成query查询字符串
+makeQuery = (querys, pageSize) ->
+  return null unless querys? and querys.query?
+  query = "config=#{makeConfig(querys.config, pageSize)}&&query=#{querys.query}"
+  query += "&&filter=#{querys.filter}" if querys.filter?
+  query += "&&sort=#{querys.sort}" if querys.sort?
+  query += "&&aggegate=#{querys.aggregate}" if querys.aggregate?
+  query += "&&distnct=#{querys.distinct}" if querys.distinct?
+  return query
+
 
 #计算搜索的过滤条件
 # TODO V3 的过滤子查询比较复杂，目前不实现
@@ -107,5 +132,6 @@ module.exports = exports =
   makeMultipleIdStr: makeMultipleIdStr
   makeFields: makeFields
   #makeFilter: makeFilter
+  makeSummary: makeSummary
   makeConfig: makeConfig
-
+  makeQuery: makeQuery

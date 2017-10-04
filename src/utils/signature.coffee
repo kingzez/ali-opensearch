@@ -9,19 +9,18 @@ init = (accessKeyId, accessKeySecret) ->
   ACCESS_KEY_SECRET = accessKeySecret
 
 md5 = (str) ->
-  console.log "str: #{str}"
   md5sum = crypto.createHash 'md5'
   md5sum.update str, Buffer.isBuffer(str) ? 'binary' : 'utf8'
   return md5sum.digest 'hex'
 
 makeSignature = (mothed, uri, request_header) ->
   params = [mothed]
-  params.push request_header['Content-MD5']
+  params.push request_header['Content-MD5']||''
   params.push request_header['Content-Type']
   params.push request_header['Date']
   params.push "x-opensearch-nonce:#{request_header['X-Opensearch-Nonce']}"
   params.push uri
-  console.dir params
+  console.log "[makeSignature] %j", params
   #return crypto.createHmac('sha1', ACCESS_KEY_SECRET).update(params.join('\n')).digest('base64')
   return crypto.createHmac('sha1', ACCESS_KEY_SECRET).update(params.join('\n')).digest().toString('base64')
 

@@ -43,8 +43,12 @@ class Search
     @format = searchOptions.format || 'json'
     @timeout = searchOptions.timeout || 3000
     require('./utils/signature').init(@accessKeyId, @accessKeySecret)
+
     @mixin(require('./models/actions'))
     @mixin(require('./models/searchs'))
+    @mixin(require('./models/suggest'))
+    @mixin(require('./models/apps'))
+
     return
 
   mixin: (obj) ->
