@@ -14,9 +14,8 @@ Tools = require '../utils/tools'
 # @params {String} appName 指定APP名， 如不指定则默认实例化时传入的appName
 getApp = (appName, callback) ->
   header = Tools.generateHeader()
-  header['Content-MD5'] = ''
+  #header['Content-MD5'] = ''
   uri = Tools.generateUri path.join(@URI_PREFIX, appName||@appName)
-  console.log "uri: #{uri}"
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
   options =
@@ -33,7 +32,6 @@ getAllApp = (page, size, callback) ->
   header = Tools.generateHeader()
   #header['Content-MD5'] = ''
   uri = Tools.generateUri path.join(@URI_PREFIX), {page:"#{page}", size:"#{size}"}
-  console.log "uri: #{uri}"
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
   options =

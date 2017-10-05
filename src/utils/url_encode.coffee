@@ -35,7 +35,7 @@ exports.encode = (str) ->
 exports.query2string = (params) ->
   str = ''
   for key, val of params
-    console.log "key: #{key} val:#{val}"
+    #console.log "key: #{key} val:#{val}"
     str += "#{exports.encode(key)}=#{exports.encode(val)}&"
   str = str.substring(0, str.length-1)#+exports.encode("的")
   return str

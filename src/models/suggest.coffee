@@ -17,12 +17,13 @@ Tools = require '../utils/tools'
 suggest = (suggestName, query, hits, callback) ->
   header = Tools.generateHeader()
   #header['Content-MD5'] = ''
-  uri = path.join(@URI_PREFIX, @appName, "/suggest", suggestName, "/search")
-  #uri = Tools.generateUri path.join(@URI_PREFIX, @appName, "/suggest", suggestName, "/search"), {query:query, hits:"#{hits}"}
+  #uri = path.join(@URI_PREFIX, @appName, "/suggest", suggestName, "/search")
+  uri = Tools.generateUri path.join(@URI_PREFIX, @appName, "/suggest", suggestName, "/search"), {query:query, hits:"#{hits}"}
   #uri = "/v3/openapi/apps/advanced_text/suggest/suggest/search?query=%E6%A0%87%E9%A2%98&hits=10"
-  console.log "uri: #{uri}"
+  #console.log "uri: #{uri}"
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
-  url = urlUtil.resolve @apiURL, Tools.generateUri uri, {query:query, hits:"#{hits}"}
+  #url = urlUtil.resolve @apiURL, Tools.generateUri uri, {query:query, hits:"#{hits}"}
+  url = urlUtil.resolve @apiURL, uri
   options =
     url: url
     method: @GET_HTTP_METHOD

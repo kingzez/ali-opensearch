@@ -14,8 +14,8 @@ ids = ['001','002','003','010']
 query = "title:'测试'"
 filter = "creation_date>100000"
 configs =
-  start:2
-  hit:2
+  start:0
+  hit:20
 summary =
   summary_field:'content'
   summary_element:'stong'

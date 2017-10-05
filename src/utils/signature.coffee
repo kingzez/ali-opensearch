@@ -20,9 +20,10 @@ makeSignature = (mothed, uri, request_header) ->
   params.push request_header['Date']
   params.push "x-opensearch-nonce:#{request_header['X-Opensearch-Nonce']}"
   params.push uri
-  console.log "[makeSignature] %j", params
+  debuglog "[makeSignature] %j", params
+  #console.log "accessKeySecret: #{ACCESS_KEY_SECRET}"
   #return crypto.createHmac('sha1', ACCESS_KEY_SECRET).update(params.join('\n')).digest('base64')
-  return crypto.createHmac('sha1', ACCESS_KEY_SECRET).update(params.join('\n')).digest().toString('base64')
+  return crypto.createHmac('sha1', ACCESS_KEY_SECRET).update(params.join('\n'),'utf8').digest().toString('base64')
 
 generateAuthorization = (mothed, uri, request_header) ->
   return "OPENSEARCH #{ACCESS_KEY_ID}:#{makeSignature(mothed, uri, request_header)}"

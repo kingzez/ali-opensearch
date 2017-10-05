@@ -40,7 +40,7 @@ generateHeader = (query, contentType, date, nonce) ->
 generateUri = (uri, http_params) ->
   queryString = urlEncode.query2string(http_params)
   return "#{uri}" if _.isEmpty(queryString)
-  return "#{uri}?#{urlEncode.query2string(http_params)}"
+  return "#{uri}?#{queryString}"
 
 parseResult = (data, page, pageSize) ->
   return data unless data
@@ -122,7 +122,7 @@ makeQuery = (querys, pageSize) ->
 #        filterStr += "contain(#{val}, \"#{filter[step+1]}\") #{filter[step+2]||''} "
 #  return filterStr
 
-console.log generateNonce(new Date())
+#console.log generateNonce(new Date())
 
 module.exports = exports =
   generateNonce: generateNonce
