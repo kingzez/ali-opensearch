@@ -30,11 +30,6 @@ generateHeader = (query, contentType, date, nonce) ->
     "Date": date.Format("yyyy-MM-ddThh:mm:ssZ")
     "Content-Type": contentType || 'application/json'
     "X-Opensearch-Nonce": nonce || generateNonce(date)
-  #if query?
-  #  console.log "query: %s", query
-  #  header["Content-MD5"] = crypto.createHash('md5').update(query).digest('hex')
-  #else
-  #  header["Content-MD5"] = ''
   return header
 
 generateUri = (uri, http_params) ->

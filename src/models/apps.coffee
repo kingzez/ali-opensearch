@@ -18,10 +18,7 @@ getApp = (appName, callback) ->
   uri = Tools.generateUri path.join(@URI_PREFIX, appName||@appName)
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
-  options =
-    url: url
-    method: @GET_HTTP_METHOD
-    timeout: @timeout
+
   @apiCall url, @GET_HTTP_METHOD, header, null, callback
   return
 
@@ -34,10 +31,7 @@ getAllApp = (page, size, callback) ->
   uri = Tools.generateUri path.join(@URI_PREFIX), {page:"#{page}", size:"#{size}"}
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
-  options =
-    url: url
-    method: @GET_HTTP_METHOD
-    timeout: @timeout
+
   @apiCall url, @GET_HTTP_METHOD, header, null, callback
   return
 

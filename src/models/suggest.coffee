@@ -24,10 +24,6 @@ suggest = (suggestName, query, hits, callback) ->
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   #url = urlUtil.resolve @apiURL, Tools.generateUri uri, {query:query, hits:"#{hits}"}
   url = urlUtil.resolve @apiURL, uri
-  options =
-    url: url
-    method: @GET_HTTP_METHOD
-    timeout: @timeout
   @apiCall url, @GET_HTTP_METHOD, header, null, callback
   return
 

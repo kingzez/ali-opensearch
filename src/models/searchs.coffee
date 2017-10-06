@@ -24,10 +24,6 @@ searchById = (id, fields, format, callback) ->
   uri = Tools.generateUri path.join(@URI_PREFIX, @appName, "/search"), params
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
-  options =
-    url: url
-    method: @GET_HTTP_METHOD
-    timeout: @timeout
   @apiCall url, @GET_HTTP_METHOD, header, null, callback
   return
 
@@ -51,10 +47,6 @@ searchByMultipleId = (ids, fields, filter, format, callback) ->
   uri = Tools.generateUri path.join(@URI_PREFIX, @appName, "/search"), params
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
-  options =
-    url: url
-    method: @GET_HTTP_METHOD
-    timeout: @timeout
   @apiCall url, @GET_HTTP_METHOD, header, null, callback
   return
 
@@ -87,10 +79,7 @@ search = (query, fields, filter, config, sort, aggregate, distinct, summary, cal
   uri = Tools.generateUri path.join(@URI_PREFIX, @appName, "/search"), params
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
-  options =
-    url: url
-    method: @GET_HTTP_METHOD
-    timeout: @timeout
+
   @apiCall url, @GET_HTTP_METHOD, header, null, callback
   return
 
@@ -128,10 +117,7 @@ advancedSearch = (query, fields, summary, qp, disable, first_rank_name, second_r
   uri = Tools.generateUri path.join(@URI_PREFIX, @appName, "/search"), params
   header['Authorization'] = Signature.generateAuthorization @GET_HTTP_METHOD, uri, header
   url = urlUtil.resolve @apiURL, uri
-  options =
-    url: url
-    method: @GET_HTTP_METHOD
-    timeout: @timeout
+
   @apiCall url, @GET_HTTP_METHOD, header, null, callback
   return
 

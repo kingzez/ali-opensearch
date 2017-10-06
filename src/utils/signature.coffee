@@ -18,7 +18,7 @@ makeSignature = (mothed, uri, request_header) ->
   params.push request_header['Content-MD5']||''
   params.push request_header['Content-Type']
   params.push request_header['Date']
-  params.push "x-opensearch-nonce:#{request_header['X-Opensearch-Nonce']}"
+  params.push "x-opensearch-nonce:#{request_header['X-Opensearch-Nonce']}" if request_header['X-Opensearch-Nonce']?
   params.push uri
   debuglog "[makeSignature] %j", params
   #console.log "accessKeySecret: #{ACCESS_KEY_SECRET}"
