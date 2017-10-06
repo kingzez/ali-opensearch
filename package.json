@@ -1,6 +1,6 @@
 {
   "name": "ali-opensearch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "阿里云开放搜索V3 APK",
   "main": "index.js",
   "scripts": {

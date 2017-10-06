@@ -9,7 +9,7 @@ Tools = require '../utils/tools'
 # 搜索文档(按id主键进行的搜索，所以没有分页和过滤)
 # @public
 # @param {String} id 主键的值
-# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,表示不进行过滤)
+# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,只返回主键数据)
 # @param {String} format 返回数据格式（默认json）
 # @return callback(err, data)
 #   data(json格式)  成功：'{"status":"OK","result":{"searchtime":0.008163,"total":3,"num":3,"viewtotal":3,"items":[{"id":"bbbbbb","title":"zhe li shi yi ge biao ti 003","owner_id":"GO2SIsP","desc":"这里是文档的详细内容","model_name":"iconpack","index_name":"test"},{"id":"ccccccc","title":"zhe li shi yi ge biao ti 005","owner_id":"GO2SIsP","desc":"这里是文档的详细内容","model_name":"iconpack","index_name":"test"},{"id":"aaaaaaaa","title":"zhe li shi yi ge biao ti 002","owner_id":"GO2SIsP","desc":"这里是文档的详细内容","model_name":"iconpack","index_name":"test"}],"facet":[]},"errors":[],"tracer":""}'
@@ -30,7 +30,7 @@ searchById = (id, fields, format, callback) ->
 # 搜索文档(按多个id主键进行的搜索，目前没有分页和过滤)
 # @public
 # @param {String} id 主键的值
-# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,表示不进行过滤)
+# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,只返回主键数据)
 # @param {String} filter 指定过滤条件 https://help.aliyun.com/document_detail/29158.html
 # @param {String} format 返回数据格式（默认json）
 # @return callback(err, data)
@@ -52,7 +52,7 @@ searchByMultipleId = (ids, fields, filter, format, callback) ->
 
 # 搜索文档
 # @param {String} query 搜索子句参数（主要用来进行分页） https://help.aliyun.com/document_detail/29157.html
-# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,表示不进行过滤)
+# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,只返回主键数据)
 # @param {String} filter 用来数据过滤的搜索子句参数 可以为Null(为Null,表示不进行过滤) https://help.aliyun.com/document_detail/29158.html
 # @param {Object|String} config 搜索子句参数 https://help.aliyun.com/document_detail/29156.html
 #      Object{start:第start个文档开始返回, hit: 返回文档的最大数量, format:返回格式(默认json), rerank_size:设置参与精排个数(200)}
@@ -91,7 +91,7 @@ search = (query, fields, filter, config, sort, aggregate, distinct, summary, cal
 #               sort: {String}  数据排序的搜索子句参数
 #               aggregate: {String} 统计子句参数
 #               distinct: {String}  聚合子句参数
-# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,表示不进行过滤)
+# @param {String|Array} fields 指定返回的字段，英文;符号分割 可以为Null(为Null,只返回主键数据)
 # @param {String} qp 指定要使用的查询分析规则，多个规则使用英文逗号（,）分隔
 # @param {String} disable 关闭指定已生效的参数功能，目前仅支持禁用 qp，summary，first_rank，second_rank 等参数功能
 # @param {String} first_rank_name 设置粗排表达式名字

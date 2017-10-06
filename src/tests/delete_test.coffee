@@ -8,7 +8,7 @@ search = new Search(config.options)
 items = ['001']
 
 items = [
-  {identifier:'002'}
+  {identifier:'022'}
 ]
 
 describe "test delete insert", ->

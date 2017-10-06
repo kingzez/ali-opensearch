@@ -7,7 +7,7 @@ search = new Search(config.options)
 
 items = [
   {
-    identifier:'001'
+    identifier:'011'
     title:'测试2'
     author:'yxd'
     subject: '阿里云的opensearch 开发测试'

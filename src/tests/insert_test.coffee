@@ -20,9 +20,9 @@ items = [
 ]
 
 items = []
-for i in [1..10]
+for i in [21..30]
   items.push {
-    identifier : "00#{i}"
+    identifier : "0#{i}"
     title:'测试'
     author:'yxd'
     subject: '阿里云的opensearch 开发测试'

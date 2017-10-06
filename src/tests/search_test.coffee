@@ -34,7 +34,7 @@ describe "test search", ->
 
   describe "searchById", ->
     it "should searchById opensearch", (done) ->
-      search.searchById '001', fields, null, (err, result) ->
+      search.searchById '011', fields, null, (err, result) ->
         if err?
           console.dir err
           return done()
@@ -62,8 +62,8 @@ describe "test search", ->
         return done()
       return
 
-  describe "search", ->
-    it "should search opensearch", (done) ->
+  describe "advancedSearch", ->
+    it "should advancedSearch opensearch", (done) ->
       search.advancedSearch querys, fields, summary, null, null, null, null, (err, result) ->
         if err?
           console.dir err

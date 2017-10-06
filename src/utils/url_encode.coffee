@@ -5,7 +5,7 @@
 ###
 
 debug = require('debug')('ali-opensearch::utils::url_encode')
-
+_ = require "underscore"
 dontNeedEncoding = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_.~'
 ###
 params = ['GET',
@@ -34,11 +34,19 @@ exports.encode = (str) ->
 #将所需的参数装换为URL String
 exports.query2string = (params) ->
   str = ''
-  for key, val of params
+  for key, val of exports.rank(params)
     #console.log "key: #{key} val:#{val}"
     str += "#{exports.encode(key)}=#{exports.encode(val)}&"
   str = str.substring(0, str.length-1)#+exports.encode("的")
   return str
+
+exports.rank = (args) ->
+  keys = _.keys(args)
+  keys = keys.sort()
+  newArgs = {}
+  keys.forEach (key) ->
+    newArgs[key] = args[key]
+  return newArgs
 
 
 #将所需的参数装换为URL encoding Object
