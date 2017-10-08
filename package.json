@@ -1,7 +1,8 @@
 {
   "name": "ali-opensearch",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "阿里云开放搜索V3 APK",
+  "homepage":"https://github.com/yxdh4620/ali-opensearch",
   "main": "lib/search",
   "scripts": {
     "coffee": "coffee -o ./lib/ -cw ./src/",

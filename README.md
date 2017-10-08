@@ -19,4 +19,3 @@
 ### 一般搜索（search， 不包含qp, disable, first_rank_name, second_rank_name等子查询语句）
 
 ### 高级搜索（advancedSearch）
-下拉菜单 suggest 还未实现（目前签名错误？）
