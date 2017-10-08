@@ -1,8 +1,8 @@
 {
   "name": "ali-opensearch",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "阿里云开放搜索V3 APK",
-  "main": "index.js",
+  "main": "lib/search",
   "scripts": {
     "coffee": "coffee -o ./lib/ -cw ./src/",
     "test": "echo \"Error: no test specified\" && exit 1"
